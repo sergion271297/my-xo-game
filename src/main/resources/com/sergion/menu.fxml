@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sergion.menuController">
+   <children>
+      <Label prefWidth="61.0" text="Main menu">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin></Label>
+      <Button fx:id="multiplayerButton" onAction="#startMultiPlayer" prefWidth="85.0" text="Start game">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin></Button>
+      <Button fx:id="exitButton" onAction="#buttonExit" prefWidth="85.0" text="Exit">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin></Button>
+   </children>
+</VBox>
