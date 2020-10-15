@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Game extends Application {
 
     private static Scene scene;
-    //private static boolean singlePlayer;
+    public static boolean singlePlayer;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,11 +33,15 @@ public class Game extends Application {
         launch();
     }
 
-    public void startMultiPlayer() throws IOException {
+    public static void startMultiPlayer() throws IOException {
+        System.out.println("startMultiPlayer");
+        Game.singlePlayer = false;
         Game.setRoot("field");
     }
 
-    public void startSinglePlayer() throws IOException {
+    public static void startSinglePlayer() throws IOException {
+        System.out.println("startSinglePlayer");
+        Game.singlePlayer = true;
         Game.setRoot("field");
     }
 

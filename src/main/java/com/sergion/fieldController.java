@@ -2,12 +2,8 @@ package com.sergion;
 
 import java.io.IOException;
 
-import com.sergion.controllers.CurrentMoveController;
-import com.sergion.controllers.MoveController;
-import com.sergion.controllers.WinnerController;
-import com.sergion.model.Field;
-import com.sergion.model.Figure;
-import com.sergion.model.Point;
+import com.sergion.controllers.*;
+import com.sergion.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -31,6 +27,7 @@ public class fieldController {
     CurrentMoveController cmc = new CurrentMoveController();
     MoveController mc= new MoveController();
     WinnerController wc = new WinnerController();
+    BotMoveController bmc = new BotMoveController();
 
     private void stopGame(){
         btn00.setDisable(true);
@@ -44,6 +41,32 @@ public class fieldController {
         btn22.setDisable(true);
         paneFinal.setDisable(false);
         textFinal.setText("Click or press any key");
+    }
+
+    private void botButtonClick(Point point){
+        Figure botFigure = cmc.currentMove(field);
+        //System.out.println("BOT coordinate: "+point.getX()+" "+ point.getY());
+        mc.applyFigure(field, point, botFigure);
+        figureCounter++;
+        System.out.println(figureCounter);
+        getBtnByPoint(point).setDisable(true);
+        getBtnByPoint(point).setText(botFigure.toString());
+        if (wc.getWinner(field) != null || figureCounter == 9){
+            stopGame();
+        }
+    }
+
+    private Button getBtnByPoint(Point p){
+        if (p.getX()==0 && p.getY()==0) return btn00;
+        if (p.getX()==0 && p.getY()==1) return btn01;
+        if (p.getX()==0 && p.getY()==2) return btn02;
+        if (p.getX()==1 && p.getY()==0) return btn10;
+        if (p.getX()==1 && p.getY()==1) return btn11;
+        if (p.getX()==1 && p.getY()==2) return btn12;
+        if (p.getX()==2 && p.getY()==0) return btn20;
+        if (p.getX()==2 && p.getY()==1) return btn21;
+        if (p.getX()==2 && p.getY()==2) return btn22;
+        else return null;
     }
 
     @FXML
@@ -60,7 +83,9 @@ public class fieldController {
         btn00.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
 
     @FXML
@@ -72,7 +97,9 @@ public class fieldController {
         btn01.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
 
     @FXML
@@ -84,7 +111,9 @@ public class fieldController {
         btn02.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
 
     @FXML
@@ -96,7 +125,9 @@ public class fieldController {
         btn10.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
 
     @FXML
@@ -108,7 +139,9 @@ public class fieldController {
         btn11.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
 
     @FXML
@@ -120,7 +153,9 @@ public class fieldController {
         btn12.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
 
     @FXML
@@ -132,7 +167,9 @@ public class fieldController {
         btn20.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
 
     @FXML
@@ -144,7 +181,9 @@ public class fieldController {
         btn21.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
     @FXML
     private void btn22() {
@@ -155,6 +194,8 @@ public class fieldController {
         btn22.setDisable(true);
         if (wc.getWinner(field) != null || figureCounter == 9){
             stopGame();
+            return;
         }
+        if (Game.singlePlayer) botButtonClick(bmc.getBotMove(field));
     }
 }

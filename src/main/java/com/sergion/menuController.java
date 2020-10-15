@@ -9,16 +9,16 @@ public class menuController {
     @FXML
     Button exitButton;
 
-    public Game game = new Game();
+    //public Game game = new Game();
 
     @FXML
     private void startSinglePlayer() throws IOException {
-        game.startSinglePlayer();
+        Game.startSinglePlayer();
     }
 
     @FXML
     private void startMultiPlayer() throws IOException {
-        game.startMultiPlayer();
+        Game.startMultiPlayer();
     }
 
     @FXML
